@@ -7,7 +7,6 @@ class Config {
     async load(){
         const configs = await Schema.find({});
         configs.forEach(config => {
-            console.log(config);
             this.cache.set(config.guildid, config.channelid);
         });
     }

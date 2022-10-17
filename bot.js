@@ -10,10 +10,10 @@ const client = ScaleCord.enableCachePlugin(new ScaleCord.createBot({
     intents: ["Guilds", "GuildMessages", "MessageContent", "GuildMessageReactions", "GuildMembers"].reduce((bits, next) => (bits |= ScaleCord.Intents[next]), 0),
     events: eventManager.load()
 }, {
-    gateway:new ScaleCord.GatewayClientProvider({
+/*     gateway:new ScaleCord.GatewayClientProvider({
         secretKey: '111',
         customUrl: 'http://localhost:3001',
-    })
+    }) */
 }), 
 {
     guilds: {
@@ -86,9 +86,9 @@ client.commands.load();
 
 client.messageCreator =  new (require('./Modules/message.js'))(client);
 
-client.gateway?.start()
+//client.gateway?.start()
 // Start Gateway with Cluster Information
-/* client.helpers.getGatewayBot().then(e => {
+client.helpers.getGatewayBot().then(e => {
     console.log(
         `[ClusterClient] ID: ${client.cluster.id}`
         + `\nRecommended Shards: ${e.shards}`
@@ -104,7 +104,7 @@ client.gateway?.start()
     client.gateway.maxShards = getInfo().TOTAL_SHARDS;
     ScaleCord.startBot(client);
 })
- */
+
 
 
 // Readable  Rest Error
