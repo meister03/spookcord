@@ -12,8 +12,6 @@ class Config {
     }
 
     async find(guildid){
-        const config = this.cache.get(guildid);
-        if(config) return config;
         const newConfig = await Schema.findOne({guildid});
         if(newConfig){
             this.cache.set(guildid, newConfig.channelid);
