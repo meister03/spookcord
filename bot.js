@@ -82,7 +82,7 @@ client.configCache = new (require('./Modules/config/config'))(client);
 client.configCache.load();
 
 client.commands = new (require('./Managers/CommandManager.js'))(client);
-client.commands.load();
+client.commands.load({slash: true});
 
 client.messageCreator =  new (require('./Modules/message.js'))(client);
 
