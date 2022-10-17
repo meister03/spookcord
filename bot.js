@@ -7,7 +7,7 @@ const eventManager =  new (require('./Managers/EventManager.js'))();
 
 const client = ScaleCord.enableCachePlugin(new ScaleCord.createBot({
     token: config.token,
-    intents: ["Guilds", "GuildMessages", "MessageContent", "GuildMessageReactions", "GuildMembers"].reduce((bits, next) => (bits |= ScaleCord.Intents[next]), 0),
+    intents: ["Guilds", "GuildMessages"].reduce((bits, next) => (bits |= ScaleCord.Intents[next]), 0),
     events: eventManager.load()
 }, {
 /*     gateway:new ScaleCord.GatewayClientProvider({
