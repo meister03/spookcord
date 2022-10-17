@@ -11,7 +11,7 @@ class EventManager extends EventEmitter {
         this.allEvents = {};
     } 
     load() {
-        const eventsFolder = resolveFolder("../events");
+        const eventsFolder = resolveFolder("../Events");
         let i = 0;
         fs.readdirSync(eventsFolder).map(async (file) => {
             if (!file.endsWith(".js")) return;
