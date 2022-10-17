@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "discord-hybrid-sharding": "^2.6.7",
+    "discord-hybrid-sharding": "github:meister03/discord-hybrid-sharding",
     "mongoose": "^6.6.5",
     "scalecord.ts": "^0.0.4"
   }
