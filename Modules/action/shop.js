@@ -6,7 +6,7 @@ class Shop {
     }
     async execute(interaction) {
         if (!interaction.data.customId.includes('|' + interaction.user.id)) {
-            return interaction.reply({ content: `**Please open your own ${this.client.commands.cache.get('shop').slash.mention} overview!**` })
+            return interaction.reply({ content: `**Please open your own ${this.client.commands.cache.get('shop').slash.mention} overview!**`, ephemeral: true })
         }
         const user = this.client.userCache.cache.get(interaction.user.id);
 
