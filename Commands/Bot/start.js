@@ -27,10 +27,7 @@ class start extends BaseCommand {
 
         const dotEmoji = '<:dot:1030140713188479006>';
 
-        const embed = new Discord.Embed();
-        embed.setTitle('Starter Guide');
-        embed.setDescription('**Goal of this Game is to collect as many treats as possible. Winners will be announced at 31th October 2022.**');
-        embed.addFields([{
+        const fields = [{
             name: 'Earn Treats',
             value: [
                 `${dotEmoji} ${this.client.commands.cache.get('daily').slash.mention} every 24 hours`,
@@ -48,7 +45,22 @@ class start extends BaseCommand {
                 `${dotEmoji} You can upgrade your carreable storage and treasure storage capacity`,
             ].join('\n'),
         }
-        ])
+        ];
+
+        if(this.member.permissions.has('MANAGE_CHANNELS')) {
+            fields.push({
+                name: 'Server Config',
+                value: [
+                    `${dotEmoji} A thread with your bought house will be created, when you set the channel`,
+                    `${dotEmoji} You can set the target channel for the thread with ${this.client.commands.cache.get('config').slash.mention}`,
+                ].join('\n'),
+            })
+        }
+
+        const embed = new Discord.Embed();
+        embed.setTitle('Starter Guide');
+        embed.setDescription('**Goal of this Game is to collect as many treats as possible. Winners will be announced at 31th October 2022.**');
+        embed.addFields()
         //embed.setThumbnail('https://cdn.discordapp.com/emojis/1029069541680095342.webp')
         embed.setColor('#FFA500');
         embed.toJSON();

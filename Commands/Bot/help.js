@@ -18,7 +18,6 @@ class help extends BaseCommand {
     }
     async execute(interaction, args, Discord, client, data) {
         const dotEmoji = '<:dot:1030140713188479006>';
-
         const embed = new Discord.Embed();
         embed.setTitle('Starter Guide');
         embed.setDescription('**Goal of this Game is to collect as many treats as possible. Winners will be announced at 31th October 2022.**');
