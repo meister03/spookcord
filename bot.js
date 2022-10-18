@@ -68,6 +68,16 @@ const client = ScaleCord.enableCachePlugin(new ScaleCord.createBot({
     allowedMentions: true,
 })
 
+client.gateway.manager.createShardOptions.makePresence = () => ({
+    status: 'online',
+    activities: [
+        {
+            name: '/start to get started!',
+            type: ScaleCord.ActivityTypes.Watching,
+        },
+    ],
+});
+
 client.cluster = new ClusterClient(client);
 client.config = config; // Removed from production and parsed from Node.ENV
 connecttodb(config.url) // Replace with Env on production

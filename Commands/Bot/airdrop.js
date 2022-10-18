@@ -49,7 +49,7 @@ class airdrop extends BaseCommand {
 
         const embed = new Discord.Embed();
         embed.setAuthor({ name: `${user.username}'s Pinata`, iconUrl: user.useravatar });
-        embed.setDescription(`**${user.username} has created an Pinata with ${args[0].value} candies.\nJoin breaking the Pinata with others before the time ends. (<t:${(Date.now()/1000 + 60*3).toFixed(0)}:R>)**`)
+        embed.setDescription(`**${user.username} has created an Pinata with ${args[0].value} candies.\nJoin breaking the Pinata with others before the time ends. (<t:${(Date.now()/1000 + 60*2).toFixed(0)}:R>)**`)
         embed.setColor('#FFA500');
         embed.setThumbnail('https://cdn.discordapp.com/emojis/1030866946293514250.webp')
         embed.toJSON();
@@ -70,7 +70,7 @@ class airdrop extends BaseCommand {
         client.userCache.update(user);
         const parcipants = new Map();
 
-        const collector = new Discord.Collector('buttonClick', { time: 60000, client: this.client, filter: (i) => i.data.customId === airdropCustomId, max: airdropAmount });
+        const collector = new Discord.Collector('buttonClick', { time: 60000*2, client: this.client, filter: (i) => i.data.customId === airdropCustomId, max: airdropAmount });
         collector.on('collect', async (i) => {
             i = client.interactions.forge(i);
             if (i.data.customId === airdropCustomId) {
