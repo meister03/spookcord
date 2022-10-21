@@ -21,7 +21,7 @@ class config extends BaseCommand {
     }
     async execute(interaction, args, Discord, client, data) {
         if (!client.userCache.cache.get(this.user.id)) {
-            this.reject(`**Please create a profile by running ${this.client.commands.cache.get('start').slash.mention}**`)
+            return this.reject(`**Please create a profile by running ${this.client.commands.cache.get('start').slash.mention}**`)
         }
         const user = client.userCache.cache.get(this.user.id);
 

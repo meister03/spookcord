@@ -15,6 +15,9 @@ class shop extends BaseCommand {
         super(data)
     }
     async execute(interaction, args, Discord, client, data) {
+        if (!client.userCache.cache.get(this.user.id)) {
+            return this.reject(`**Please create a profile by running ${this.client.commands.cache.get('start').slash.mention}**`)
+        }
         const user = client.userCache.cache.get(this.user.id);
 
         const items = [];
