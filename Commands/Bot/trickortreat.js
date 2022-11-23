@@ -23,21 +23,21 @@ class trickortreat extends BaseCommand {
 
         const user = client.userCache.cache.get(this.user.id);
         if(user.lastKnockedAt) {
-            if(user.lastKnockedAt + 60000 > Date.now()) {
-                return this.reject(`**You can knock on another door <t:${(user.lastKnockedAt/1000 + 60*10).toFixed(0)}:R> **`)
+            if((user.lastKnockedAt + 60000*10) > Date.now()) {
+                return this.reject(`**You can knock on another doors <t:${(user.lastKnockedAt/1000 + 60*10).toFixed(0)}:R> **`)
             }
         }
 
         const users = [...client.userCache.cache.values()].filter(u => u.userid !== this.user.id && ((u.lastKnockedFromAt || 0) + 60000*10) <  Date.now());
         if(users.length === 0) {
-            return this.reject(`**There are no users to knock on their door**`)
+            return this.reject(`**There are no users to knock on their doors**`)
         }
         
         const lastRecentUsers = users.sort((a, b) => a.lastKnockedFromAt - b.lastKnockedFromAt).slice(0, 5).sort((a, b) => getCandyAmount(a) - getCandyAmount(b));
         const randomUser = lastRecentUsers[Math.floor(Math.random() * lastRecentUsers.length)];
 
         if(!randomUser) {
-            return this.reject(`**There are no users to knock on their door**`)
+            return this.reject(`**There are no users to knock on their doors**`)
         }
 
         const attackCooldown = (randomUser.lastAttackedFromAt || 0) + 60000*60;

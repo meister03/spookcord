@@ -18,7 +18,7 @@ class start extends BaseCommand {
     async execute(interaction, args, Discord, client, data) {
         //await client.userCache.delete(this.user.id)
         if (client.userCache.cache.has(this.user.id)) {
-            return this.reject(`**You already created a profile | Start collecting some treats by running ${this.client.commands.cache.get('daily').slash.mention}**`)
+           return this.reject(`**You already created a profile | Start collecting some treats by running ${this.client.commands.cache.get('daily').slash.mention}**`)
         }
 
         const user = await client.userCache.create({ userid: this.user.id, username: this.user.tag, useravatar: this.user.avatarURL() }).catch(err => console.log(err));
@@ -60,7 +60,7 @@ class start extends BaseCommand {
         const embed = new Discord.Embed();
         embed.setTitle('Starter Guide');
         embed.setDescription('**Goal of this Game is to collect as many treats as possible. Winners will be announced at 31th October 2022.**');
-        embed.addFields()
+        embed.addFields(fields)
         //embed.setThumbnail('https://cdn.discordapp.com/emojis/1029069541680095342.webp')
         embed.setColor('#FFA500');
         embed.toJSON();

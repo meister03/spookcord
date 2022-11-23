@@ -94,7 +94,7 @@ class Attack {
         const ehouseOwner = {
             id: houseOwner.userid,
             name: houseOwner.username, 
-            avatarURL: houseOwner.avatarURL,
+            avatarURL: houseOwner.useravatar,
             guard: guardInfo
         };
 
